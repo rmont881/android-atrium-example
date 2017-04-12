@@ -17,6 +17,7 @@ import java.util.TimerTask;
 
 public class SplashFragment extends Fragment {
 
+    private FragmentListener mListener;
     private Timer splashTimer;
 
     public SplashFragment() {
@@ -25,6 +26,7 @@ public class SplashFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mListener = (FragmentListener)getActivity();
     }
 
     @Override
@@ -34,8 +36,8 @@ public class SplashFragment extends Fragment {
         splashTimer.schedule(new TimerTask() {
                 @Override
                 public void run() {
-//                    EmailLoginFragment fragment= new EmailLoginFragment();
-//                    mListener.pushFragment(fragment, "Email");
+                    LoginFlowFragment fragment = new LoginFlowFragment();
+                    mListener.pushFragment(fragment, "Login");
 
                 }
             }, 3000);
@@ -43,11 +45,6 @@ public class SplashFragment extends Fragment {
                 container, false);
 
         return rootView;
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
     }
 
 }
